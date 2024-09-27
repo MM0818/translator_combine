@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/speech_recognition" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/translator_three" vcs="Git" />
   </component>
 </project>
