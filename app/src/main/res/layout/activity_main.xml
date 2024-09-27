@@ -25,29 +25,28 @@
             android:id="@+id/tvRecognizeResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="当前语音识别结果："
-            android:textSize="18sp"
-            android:padding="16dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:textColor="#000000" />
+            android:padding="16dp"
+            android:text="录入内容："
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/tvRecognizeStatus"
+        <ProgressBar
+            android:id="@+id/volumeBar"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="当前语音识别状态："
-            android:textSize="18sp"
-            android:padding="16dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:textColor="#000000" />
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#03A9F4"/> <!-- progress为初始进度 -->
+
 
         <TextView
             android:id="@+id/tvTranslateResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="当前语音翻译结果："
+            android:text="释义："
             android:textSize="18sp"
             android:padding="16dp"
             android:layout_marginTop="20dp"
@@ -65,22 +64,41 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnStartListening"
+        <TextView
+            android:id="@+id/tvRecognizeStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="录入状态："
+            android:textSize="18sp"
             android:padding="16dp"
-            android:text="开始识别" />
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="#000000" />
 
-        <Button
-            android:id="@+id/btnStopListening"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:padding="16dp"
-            android:text="完成" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnStartListening"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="开始识别" />
+
+            <Button
+                android:id="@+id/btnStopListening"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:padding="16dp"
+                android:text="完成" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

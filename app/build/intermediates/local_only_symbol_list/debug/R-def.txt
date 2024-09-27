@@ -16,6 +16,7 @@ id title
 id tvRecognizeResult
 id tvRecognizeStatus
 id tvTranslateResult
+id volumeBar
 layout activity_main
 mipmap ic_launcher
 mipmap ic_launcher_round

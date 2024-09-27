@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.LocaleList
 import android.util.Log
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ComponentActivity
@@ -35,6 +36,7 @@ import retrofit2.http.Query
 import retrofit2.http.Field
 import java.security.MessageDigest
 import java.util.ArrayList
+//录音视图
 
 @SuppressLint("RestrictedApi")
 class MainActivity : ComponentActivity() {
@@ -70,7 +72,7 @@ class MainActivity : ComponentActivity() {
             if (!isRecognizing&& ::speechRecognizer.isInitialized) {
                 speechRecognizer.startListening(recognizerListener)
                 isRecognizing = true
-                findViewById<TextView>(R.id.tvRecognizeStatus).text = "当前语音识别状态：正在听，请说中文或英文..."
+                findViewById<TextView>(R.id.tvRecognizeStatus).text = "正在听，请说中文或英文..."
             }else {
                 Log.e(TAG,"speechRecognizer 未初始化")
             }
@@ -80,7 +82,7 @@ class MainActivity : ComponentActivity() {
             if (isRecognizing ) {
                 speechRecognizer.stopListening()
                 isRecognizing = false
-                findViewById<TextView>(R.id.tvRecognizeStatus).text = "当前语音识别状态：识别停止"
+                findViewById<TextView>(R.id.tvRecognizeStatus).text = "识别停止"
             }
         }
 
@@ -198,7 +200,7 @@ class MainActivity : ComponentActivity() {
                 if (response.isSuccessful) {
                     val result = response.body()?.trans_result?.get(0)?.dst
                     runOnUiThread {
-                        tvTranslateResult.text = "翻译结果：$result"  //////有这个，但是是空的
+                        tvTranslateResult.text = "释义：$result"  //////有这个，但是是空的
                     }
                     Log.d(TAG, "翻译结果: $result")
                 } else {  //请求不成功，状态码非 2xx
@@ -270,6 +272,12 @@ class MainActivity : ComponentActivity() {
                 override fun onVolumeChanged(volume: Int, bytes: ByteArray?) { // 音量变化
                     // 音量变化，可以用来动态更新 UI 中的音量指示器
                     Log.d(TAG, "音量变化: $volume")
+
+                    // 获取 ProgressBar 实例
+                    val volumeBar = findViewById<ProgressBar>(R.id.volumeBar)
+
+                    // 更新进度条的进度值
+                    volumeBar.progress = volume
                 }
 
                 override fun onBeginOfSpeech() { // 开始说话
